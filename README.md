@@ -15,6 +15,7 @@
 
 * has_many :items
 * has_many :records_of_purchase
+* has_many :buyers_info
 
 ## Items
 
@@ -35,6 +36,7 @@
 
 - belongs_to :user
 - belongs_to :category
+- belongs_to :buyers_info
 
 ## ItemCategory
 
@@ -57,3 +59,22 @@
 
 - belongs_to :user
 * has_many :items
+* has_many :buyers_info
+
+## BuyersInfo
+
+| Column          | Type         | Options           |
+|-----------------|--------------|-------------------|
+| postal_code     | integer      | null: false       |
+| prefecture      | string       | null: false       |
+| city            | string       | null: false       |
+| address         | string       | null: false       |
+| building        | string       | null: false       |
+| phone_number    | string       | null: false       |
+
+### Association
+
+- belongs_to :users
+- belongs_to :records_of_purchase
+* has_many :items
+
