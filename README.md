@@ -35,7 +35,6 @@
 - belongs_to :user
 - has_one :records_of_purchase
 
-
 ## RecordsOfOrder
 
 | Column          | Type         | Options           |
