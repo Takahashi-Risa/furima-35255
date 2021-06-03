@@ -14,7 +14,7 @@
 ### Association
 
 * has_many :items
-* has_many :records_of_purchases
+* has_many :records_of_orders
 
 ## Items
 
@@ -33,7 +33,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :records_of_purchase
+- has_one :records_of_order
 
 ## RecordsOfOrder
 
@@ -62,4 +62,4 @@
 
 ### Association
 
-- belongs_to :records_of_purchase
+- belongs_to :records_of_order
