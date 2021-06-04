@@ -1,24 +1,65 @@
-# README
+## Users
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type         | Options                   |
+|--------------------|--------------|---------------------------|
+| nickname           | string       | null: false               |
+| email              | string       | null: false, unique: true |
+| encrypted_password | string       | null: false               |
+| first_name         | string       | null: false               | 
+| last_name          | string       | null: false               |
+| first_name_kana    | string       | null: false               |
+| last_name_kana     | string       | null: false               |
+| birth_date         | date         | null: false               |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+* has_many :items
+* has_many :records_of_orders
 
-* System dependencies
+## Items
 
-* Configuration
+| Column                 | Type         | Options           |
+|------------------------|--------------|-------------------|
+| name                   | string       | null: false       |
+| info                   | text         | null: false       |
+| category_id            | integer      | null: false       |
+| sales_status_id        | integer      | null: false       |
+| shipping_fee_status_id | integer      | null: false       |
+| scheduled_delivery_id  | integer      | null: false       |
+| price                  | integer      | null: false       |
+| user                   | references   | foreign_key: true |
+| prefecture_id          | integer      | null: false       |
 
-* Database creation
+### Association
 
-* Database initialization
+- belongs_to :user
+- has_one :records_of_order
 
-* How to run the test suite
+## RecordsOfOrder
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column          | Type         | Options           |
+|-----------------|--------------|-------------------|
+| user            | references   | foreign_key: true |
+| item            | references   | foreign_key: true |
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to :user
+* belongs_to :item
+* has_one :buyers_info
+
+## BuyersInfo
+
+| Column                 | Type         | Options           |
+|------------------------|--------------|-------------------|
+| postal_code            | string       | null: false       |
+| prefecture_id          | integer      | null: false       |
+| city                   | string       | null: false       |
+| address                | string       | null: false       |
+| building               | string       |                   |
+| phone_number           | string       | null: false       |
+| records_of_purchase_id | references   | foreign_key: true |
+
+### Association
+
+- belongs_to :records_of_order
