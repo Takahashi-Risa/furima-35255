@@ -20,3 +20,4 @@ class Item < ApplicationRecord
   def message_params
     params.require(:item).permit(:name, :image).merge(user_id: cuurent_user.index)
 end
+
