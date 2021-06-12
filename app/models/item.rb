@@ -1,6 +1,4 @@
 class Item < ApplicationRecord
-
-
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :sales_status
@@ -15,17 +13,16 @@ class Item < ApplicationRecord
     validates :name
     validates :image
     validates :info
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, only_integer: true }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }
   end
 
-  with_options numericality: { other_than: 1 } , presence: true do
-    validates :category_id 
+  with_options numericality: { other_than: 1 }, presence: true do
+    validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id
     validates :scheduled_delivery_id
     validates :prefecture_id
   end
-    
 
   private
 
@@ -33,4 +30,3 @@ class Item < ApplicationRecord
     params.require(:item).permit(:name, :image).merge(user_id: cuurent_user.index)
   end
 end
-
