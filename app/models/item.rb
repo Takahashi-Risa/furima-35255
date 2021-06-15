@@ -24,9 +24,4 @@ class Item < ApplicationRecord
     validates :prefecture_id
   end
 
-  private
-
-  def item_params
-    params.require(:item).permit(:name, :image).merge(user_id: cuurent_user.index)
-  end
 end

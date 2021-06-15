@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :new, :create]
+  
   before_action :authenticate_user!, except: [:index]
   # 後で:showアクションも上記に追加する
   # before_action :contributor_confirmation, only: [:edit, :update, :destroy]
