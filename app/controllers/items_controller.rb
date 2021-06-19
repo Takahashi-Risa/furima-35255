@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
   
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
+  # :show追加↑
   # before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
