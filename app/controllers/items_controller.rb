@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # :destroyを追加
 
   def index
-    @items = Item.all.includes(:user).order('created_at DESC')
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
