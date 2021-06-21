@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -53,6 +52,6 @@ class ItemsController < ApplicationController
   end
 
   def contributor_confirmation
-    redirect_to action :index unless current_user.id == @item.user_id
+    redirect_to root_path unless current_user.id == @item.user_id 
   end
 end
