@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
+    order = Order.all
     @items = Item.all.order('created_at DESC')
   end
 
@@ -51,6 +52,6 @@ class ItemsController < ApplicationController
   end
 
   def contributor_confirmation
-    redirect_to root_path unless current_user.id == @item.user_id 
+    redirect_to root_path unless current_user.id == @item.user_id && @item.order.nil?
   end
 end
