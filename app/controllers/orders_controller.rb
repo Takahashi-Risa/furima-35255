@@ -1,11 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :contributor_confirmation, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
+  before_action :contributor_confirmation, only: [:index, :create]
+
 
 
   def index
-    @buyers_info = BuyersInfo.new
+    @buy_item = BuyItem.new
   end
 
   def create
@@ -34,10 +35,10 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
-      card: order_shipping_params[:token],
+      card: buy_item_params[:token],
       currency: 'jpy'
     )
   end
