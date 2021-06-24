@@ -47,6 +47,11 @@ RSpec.describe BuyItem, type: :model do
         @buy_item.valid?
         expect(@buy_item.errors.full_messages).to include('Prefecture Select')
       end
+      it '都道府県に「--」が選択されている場合は登録できない' do
+        @buy_item.prefecture_id = '1'
+        @buy_item.valid?
+        expect(@buy_item.errors.full_messages).to include('Prefecture Select')
+      end
       it '市町村の入力がないと保存できない' do
         @buy_item.city = ''
         @buy_item.valid?
