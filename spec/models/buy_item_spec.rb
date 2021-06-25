@@ -75,12 +75,12 @@ RSpec.describe BuyItem, type: :model do
       it '電話番号が11桁を超えると保存できない' do
         @buy_item.phone_number = '090123456789'
         @buy_item.valid?
-        expect(@buy_item.errors.full_messages).to include("Phone number Input only number")
+        expect(@buy_item.errors.full_messages).to include('Phone number Input only number')
       end
       it '電話番号が9桁以下だと保存できない' do
         @buy_item.phone_number = '012345678'
         @buy_item.valid?
-        expect(@buy_item.errors.full_messages).to include("Phone number Input only number")
+        expect(@buy_item.errors.full_messages).to include('Phone number Input only number')
       end
     end
   end
