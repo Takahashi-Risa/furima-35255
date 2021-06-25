@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user
   has_one_attached :image
-  # has_one :records_of_order
+  has_one :order
 
   with_options presence: true do
     validates :name
@@ -23,5 +23,4 @@ class Item < ApplicationRecord
     validates :scheduled_delivery_id
     validates :prefecture_id
   end
-
 end
